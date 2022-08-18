@@ -29,6 +29,3 @@
  
   **因为statement只有sql，没有数据，无法获取原始的变更日志，所以一般建议为ROW模式mysql数据实时同步**  
   
-  我们可以通过解析mysql的bin-log的方式来实现，解析bin-log可以有多种方式，可以通过canal，或者max-well等各种方式实现。以下是各种抽取方式的对比介绍  
-  ![解析binlog选型](/assets/img/philly-magic-garden.jpg "Magic Gardens")
-  
