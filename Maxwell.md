@@ -34,14 +34,24 @@
   - 关闭mysql主从，关闭binlog  
   ```
    # vim /etc/my.cnf  //注释掉log-bin,binlog_format
-   # Replication Master Server (default)
-   # binary logging is required for replication
    # log-bin=mysql-bin
-   # binary logging format - mixed recommended
-   # binlog_format=mixed
+   # binlog_format=row
    然后重启数据库
   ```
   - 开启mysql主从，设置expire_logs_days
+    - 重启数据库方式  
+      修改expire_logs_days,x是自动删除的天数，一般将x设置为短点; 默认值为0,表示“没有自动删除”
+      ```
+       # vim /etc/my.cnf
+       expire_logs_days = x  
+      ```
+    - 不重启数据库方式  
+      开启mysql主从，直接在mysql里设置expire_logs_days 
+      ```
+      > show binary logs;
+      > show variables like '%log%';
+      > set global expire_logs_days = 10;
+      ```
   - 手动清除binlog文件，> PURGE MASTER LOGS TO ‘MySQL-bin.010′
   
   
