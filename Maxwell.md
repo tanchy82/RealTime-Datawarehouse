@@ -48,12 +48,26 @@
     - 不重启数据库方式  
       开启mysql主从，直接在mysql里设置expire_logs_days 
       ```
+      # /usr/local/mysql/bin/mysql -u root -p
       > show binary logs;
       > show variables like '%log%';
-      > set global expire_logs_days = 10;
+      > set global expire_logs_days = x;
       ```
   - 手动清除binlog文件，> PURGE MASTER LOGS TO ‘MySQL-bin.010′
-  
+    - 定制删除 
+     ```
+      # /usr/local/mysql/bin/mysql -u root -p
+      > PURGE MASTER LOGS BEFORE DATE_SUB(CURRENT_DATE, INTERVAL 10 DAY);  //删除10天前的MySQL binlog日志
+      > PURGE MASTER LOGS TO 'MySQL-bin.010';  //清除MySQL-bin.010日志
+      > PURGE MASTER LOGS BEFORE '2018-11-22 13:00:00';   //清除2018-11-22 13:00:00前binlog日志
+      > PURGE MASTER LOGS BEFORE DATE_SUB( NOW( ), INTERVAL 3 DAY);  //清除3天前binlog日志
+     ```
+    - 重置日志 
+     ```
+      # /usr/local/mysql/bin/mysql -u root -p
+      > reset master;;  //清除binlog
+     ```
+    
   
 
  
