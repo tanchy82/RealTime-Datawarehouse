@@ -1,5 +1,5 @@
 
-# ** Maxwell **
+# **Maxwell**
 
 ## 1, 基本介绍 
   maxwell是一个能实时读取MySQL二进制日志binlog，并生成 JSON 格式的消息。    
