@@ -14,8 +14,8 @@
   如果后续我们需要配置主从数据库，如果我们需要从数据库同步主数据库的内容，我们就可以通过binlog来进行同步。   
   说白了binlog可以用于解决实时同步mysql数据库当中的数据 binlog的格式也有三种：STATEMENT、ROW、MIXED。 
   
-  -STATMENT模式：基于SQL语句的复制(statement-based replication, SBR)，每一条会修改数据的sql语句会记录到binlog中。  
-     -优点：不需要记录每一条SQL语句与每行的数据变化，这样子binlog的日志也会比较少，减少了磁盘IO，提高性能。  
-     -缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及 user-defined functions(udf)等会出现问题)  
+  - STATMENT模式：基于SQL语句的复制(statement-based replication, SBR)，每一条会修改数据的sql语句会记录到binlog中。  
+     - 优点：不需要记录每一条SQL语句与每行的数据变化，这样子binlog的日志也会比较少，减少了磁盘IO，提高性能。  
+     - 缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及 user-defined functions(udf)等会出现问题)  
  
   
