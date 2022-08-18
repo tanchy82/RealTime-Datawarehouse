@@ -65,7 +65,7 @@
     - 重置日志 
      ```
       # /usr/local/mysql/bin/mysql -u root -p
-      > reset master;;  //清除binlog
+      > reset master;  //清除binlog
      ```
      
  > **清除binlog时，对从mysql的影响**  
