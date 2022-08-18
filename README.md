@@ -1,4 +1,4 @@
-# -RealTime-Datawarehouse
+# RealTime-Datawarehouse
 
 1, 基于ES的实时数仓架构图 <Br>
     https://www.processon.com/view/link/62f0cca5f346fb706bff3d7c
