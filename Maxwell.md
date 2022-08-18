@@ -15,7 +15,11 @@
   说白了binlog可以用于解决实时同步mysql数据库当中的数据 binlog的格式也有三种：STATEMENT、ROW、MIXED。 
   
   - STATMENT模式：基于SQL语句的复制(statement-based replication, SBR)，每一条会修改数据的sql语句会记录到binlog中。  
-     - 优点：不需要记录每一条SQL语句与每行的数据变化，这样子binlog的日志也会比较少，减少了磁盘IO，提高性能。  
-     - 缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及 user-defined functions(udf)等会出现问题)  
+    - 优点：不需要记录每一条SQL语句与每行的数据变化，这样子binlog的日志也会比较少，减少了磁盘IO，提高性能。  
+    - 缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及 user-defined functions(udf)等会出现问题)  
+  
+  - 基于行的复制(row-based replication, RBR)：不记录每一条SQL语句的上下文信息，仅需记录哪条数据被修改了，修改成了什么样子了。
+    - 优点：不会出现某些特定情况下的存储过程或function、或trigger的调用和触发无法被正确复制的问题
+    - 缺点：会产生大量的日志，尤其是alter table的时候会让日志暴涨。
  
   
