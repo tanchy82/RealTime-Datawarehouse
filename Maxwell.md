@@ -16,10 +16,13 @@
   
   - STATMENT模式：基于SQL语句的复制(statement-based replication, SBR)，每一条会修改数据的sql语句会记录到binlog中。  
     - 优点：不需要记录每一条SQL语句与每行的数据变化，这样子binlog的日志也会比较少，减少了磁盘IO，提高性能。  
-    - 缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数， last_insert_id()，以及 user-defined functions(udf)等会出现问题)  
+    - 缺点：在某些情况下会导致master-slave中的数据不一致(如sleep()函数,last_insert_id()以及user-defined functions(udf)等会出现问题)  
   
-  - 基于行的复制(row-based replication, RBR)：不记录每一条SQL语句的上下文信息，仅需记录哪条数据被修改了，修改成了什么样子了。
+  - ROW模式(row-based replication, RBR)：不记录每一条SQL语句的上下文信息，仅需记录哪条数据被修改了，修改成了什么样子了。
     - 优点：不会出现某些特定情况下的存储过程或function、或trigger的调用和触发无法被正确复制的问题
     - 缺点：会产生大量的日志，尤其是alter table的时候会让日志暴涨。
- 
   
+  - 混合模式复制(mixed-based replication, MBR)：以上两种模式的混合使用  
+    一般的复制使用STATEMENT模式保存binlog，对于STATEMENT模式无法复制的操作使用ROW模式保存binlog,MySQL会根据执行的SQL语句选择日志保存方式。
+ 
+  **因为statement只有sql，没有数据，无法获取原始的变更日志，所以一般建议为ROW模式mysql数据实时同步，我们可以通过解析mysql的bin-log的方式来实现，解析bin-log可以有多种方式，可以通过canal，或者max-well等各种方式实现。以下是各种抽取方式的对比介绍**
