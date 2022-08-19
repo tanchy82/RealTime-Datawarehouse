@@ -147,7 +147,7 @@
      #filter= exclude: *.*, include: oldtan_test.abc exclude: oldtan_test.abc.col = "name"
      #filter= exclude: oldtan_test.abc.col = "name"
      ```
-   - 脚本过滤 
+   - 脚本过滤   
     [参考](https://github.com/zendesk/maxwell/blob/master/src/example/filter.js)
     
  ## 8, BLOB, BINARY and VARBINARY      
