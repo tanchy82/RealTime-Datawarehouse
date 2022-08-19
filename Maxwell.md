@@ -10,6 +10,27 @@
   
   GitHub地址:https://github.com/zendesk/maxwell
   
+## 2, Mysql 必操作
+ - my.cnf操作 
+  ```
+  # /etc/my.cnf
+   [mysqld]
+    # maxwell needs binlog_format=row
+   binlog_format=row
+   server_id=1 
+   log-bin=master
+  ```
+ - 库操作
+  ```
+   mysql> CREATE USER 'maxwell'@'%' IDENTIFIED BY 'XXXXXX';
+   mysql> CREATE USER 'maxwell'@'localhost' IDENTIFIED BY 'XXXXXX';
+
+   mysql> GRANT ALL ON maxwell.* TO 'maxwell'@'%';
+   mysql> GRANT ALL ON maxwell.* TO 'maxwell'@'localhost';
+
+   mysql> GRANT SELECT, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'maxwell'@'%';
+   mysql> GRANT SELECT, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'maxwell'@'localhost';
+  ```
   
 ## 2, binlog介绍
   binlog是mysql当中的二进制日志，主要用于记录对mysql数据库当中的数据发生或潜在发生更改的SQL语句，并以二进制的形式保存在磁盘中。  
@@ -73,5 +94,5 @@
  > 不过，如果从属服务器是停止的，并且您碰巧清理了其想要读取的日志之一，则从属服务器启动后不能复制。当从属服务器正在复制时，本语句可以安全运行。您不需要停止它们。 
   
 
- 
+ ## 4, binlog删除
   
