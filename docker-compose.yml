@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - /home/docker/mysql2kafka/zookeeper_data:/bitnami
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:3.2
+    container_name: kafka
+    ports:
+      - "19092:9092"
+    volumes:
+      - /home/docker/mysql2kafka/kafka_data:/bitnami
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+  mysql:
+    restart: always
+    image: mysql:8.0.30
+    container_name: mysql
+    volumes:
+      - /home/docker/mysql2kafka/mysql/mydir:/mydir
+      - /home/docker/mysql2kafka/mysql/datadir:/var/lib/mysql
+      - /home/docker/mysql2kafka/mysql/my.cnf:/etc/my.cnf
+      - /home/docker/mysql2kafka/mysql/source:/docker-entrypoint-initdb.d
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "MYSQL_DATABASE=oldtan"
+      - "TZ=Asia/Shanghai"
+    networks:
+      - app-tier
+    ports:
+      - 23306:3306
+ # maxwell:
+ #   image: zendesk/maxwell:v1.38.0
+ #   container_name: maxwell
+ #   command: bin/maxwell --config /etc/maxwell/config.properties --daemon
+ #   volumes:
+ #     - /home/docker/mysql2kafka/maxwell:/etc/maxwell/
+ #   networks:
+ #     - app-tier
+ #   links:
+ #     - mysql
+ #     - kafka
+ #   depends_on: 
+ #     - mysql
+ #     - kafka
+
+networks:
+  app-tier:
+    driver: bridge
