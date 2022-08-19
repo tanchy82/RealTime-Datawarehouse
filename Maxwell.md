@@ -115,6 +115,10 @@
      > **如需要再次全库导入,则需要重复1,2, 或者update重置bootstrap表相关的库\表数据记录, 仅仅保留id,database_name,table_name,where_clause**
 
  ## 6, Json Data type 
+   Json Data type 为以下json数据记录的type属性值
+   ```
+    {"database":"oldtan_test","table":"test","type":"bootstrap-insert","ts":1660885808,"data":{"id":6,"name":"a6"}}
+   ``` 
     - insert
     - update
     - delete
