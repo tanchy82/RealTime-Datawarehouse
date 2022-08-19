@@ -105,7 +105,7 @@
      10:54:49,078 ERROR MaxwellBootstrapUtility - Connections could not be acquired from the underlying database!java.sql.SQLException: Connections could not be acquired from the underlying database! at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
      ```  
    - 数据库操作
-     - 1, 操作maxwell.bootstrap表
+     - 1, 操作maxwell.bootstrap表 (maxwell库会在第一次执行maxwell命令时对链接的mysql进行建库\表操作)
       ```   
       # 单表操作,多表需要insert多条数据记录
       mysql> insert into bootstrap (database_name,table_name,where_clause) values ('***','***','***');
