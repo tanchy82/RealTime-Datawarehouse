@@ -162,10 +162,7 @@
    默认情况下，maxwell 使用 kafka 1.0.0 库. 如需要使用kafka的其他库  
     
     - 1. 要把新版本jar eg.(kafka-clients-3.2.0.jar) 拷贝到 $Maxwell_home/lib/kafka-clients/目录下
-    - 2. 在启动 maxwell 命令行时加上  ** 必须在命令行加此flag  **
-       ```
-        --kafka_version=3.2.0 
-       ```   
+    - 2. 在启动 maxwell 命令行时加上 '--kafka_version=3.2.0'   ** 必须在命令行加此flag  **  
     
    
    
