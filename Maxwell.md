@@ -129,7 +129,25 @@
    - bootstrap-complete  
     
  ## 7, Filtering  
-    
+   - 简单库\表过滤
+     **库/表验证通过, 列过滤测试不好用**
+     ```
+     # filter rows out of Maxwell's output.  Command separated list of filter-rules, evaluated in sequence.
+     # A filter rule is:
+     #  <type> ":" <db> "." <tbl> [ "." <col> "=" <col_val> ]
+     #  type    ::= [ "include" | "exclude" | "blacklist" ]
+     #  db      ::= [ "/regexp/" | "string" | "`string`" | "*" ]
+     #  tbl     ::= [ "/regexp/" | "string" | "`string`" | "*" ]
+     #  col_val ::= "column_name"
+     #  tbl     ::= [ "/regexp/" | "string" | "`string`" | "*" ]
+     #
+     # See http://maxwells-daemon.io/filtering for more details
+     #
+     #filter= exclude: *.*, include: foo.*, include: bar.baz, include: foo.bar.col_eg = "value_to_match"
+     #filter= exclude: *.*, include: oldtan_test.abc exclude: oldtan_test.abc.col = "name"
+     #filter= exclude: oldtan_test.abc.col = "name"
+     ```
+   - 脚本过滤 
     
     
  ## 8, BLOB, BINARY and VARBINARY      
