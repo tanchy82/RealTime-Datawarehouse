@@ -129,7 +129,7 @@
    - bootstrap-complete  
     
  ## 7, Filtering  
-   - 简单库\表过滤
+   - 简单库\表过滤  
      **库/表验证通过, 列过滤测试不好用**
      ```
      # filter rows out of Maxwell's output.  Command separated list of filter-rules, evaluated in sequence.
