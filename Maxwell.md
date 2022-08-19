@@ -120,13 +120,13 @@
     {"database":"oldtan_test","table":"test","type":"bootstrap-insert","ts":1660885808,"data":{"id":6,"name":"a6"}}
    ``` 
    Maxwell共包含以下:  
-    - insert  
-    - update  
-    - delete  
-    - table-create  
-    - table-alter  
-    - bootstrap-insert  
-    - bootstrap-complete  
+   - insert  
+   - update  
+   - delete  
+   - table-create  
+   - table-alter  
+   - bootstrap-insert  
+   - bootstrap-complete  
     
  ## 7, Filtering  
     
