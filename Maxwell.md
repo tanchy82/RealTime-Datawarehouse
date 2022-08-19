@@ -32,7 +32,7 @@
    mysql> GRANT SELECT, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'maxwell'@'localhost';
   ```
   
-## 2, binlog介绍
+## 3, binlog介绍
   binlog是mysql当中的二进制日志，主要用于记录对mysql数据库当中的数据发生或潜在发生更改的SQL语句，并以二进制的形式保存在磁盘中。  
   如果后续我们需要配置主从数据库，如果我们需要从数据库同步主数据库的内容，我们就可以通过binlog来进行同步。   
   说白了binlog可以用于解决实时同步mysql数据库当中的数据 binlog的格式也有三种：STATEMENT、ROW、MIXED。 
@@ -50,7 +50,7 @@
  
   > **因为statement只有sql，没有数据，无法获取原始的变更日志，所以一般建议为ROW模式mysql数据实时同步**
 
-## 3, binlog删除
+## 4, binlog删除
   当开启MySQL数据库主从时，会产生大量如mysql-bin.00000* log的文件，这会大量耗费您的硬盘空间.可以有三种删除方法:
   - 关闭mysql主从，关闭binlog  
   ```
@@ -94,5 +94,18 @@
  > 不过，如果从属服务器是停止的，并且您碰巧清理了其想要读取的日志之一，则从属服务器启动后不能复制。当从属服务器正在复制时，本语句可以安全运行。您不需要停止它们。 
   
 
- ## 4, binlog删除
+ ## 5, bootstrap 数据重放
+   maxwell数据重放分两种模式
+   - 命令行操作
+     官网提供命令行模式未操作成功,会出现以下异常
+       ```
+     [root@******** bin]# ./maxwell-bootstrap --config ./config.properties --database **** --table ***
+     connecting to jdbc:mysql://127.0.0.1:3306/maxwell?allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
+     10:54:49,073 ERROR MaxwellBootstrapUtility - failed to connect to mysql server @ jdbc:mysql://127.0.0.1:3306/maxwell?     allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
+     10:54:49,078 ERROR MaxwellBootstrapUtility - Connections could not be acquired from the underlying database!
+java.sql.SQLException: Connections could not be acquired from the underlying database! at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
+
+       ```
+       
+   - 数据库操作
   
