@@ -123,7 +123,13 @@
     - bootstrap-insert
     - bootstrap-complete
     
- ## 7, BLOB, BINARY and VARBINARY      
+ ## 7, Filtering  
+    
+    
+    
+ ## 8, BLOB, BINARY and VARBINARY      
    Maxell will base64 encode BLOB, BINARY and VARBINARY columns (as well as varchar/string columns with a BINARY encoding).
+   
+ ## 9, 加密/解密    
    
    
