@@ -94,16 +94,22 @@
  > 不过，如果从属服务器是停止的，并且您碰巧清理了其想要读取的日志之一，则从属服务器启动后不能复制。当从属服务器正在复制时，本语句可以安全运行。您不需要停止它们。 
   
 
- ## 5, bootstrap 数据重放
-   maxwell数据重放分两种模式
+ ## 5, bootstrap 数据重放  
+   maxwell数据重放分两种模式  
    - 命令行操作
      官网提供命令行模式未操作成功,会出现以下异常
      ```
      [root@******** bin]# ./maxwell-bootstrap --config ./config.properties --database **** --table ***
      connecting to jdbc:mysql://127.0.0.1:3306/maxwell?allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
-     10:54:49,073 ERROR MaxwellBootstrapUtility - failed to connect to mysql server @ jdbc:mysql://127.0.0.1:3306/maxwell?     allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
+     10:54:49,073 ERROR MaxwellBootstrapUtility - failed to connect to mysql server @jdbc:mysql://127.0.0.1:3306/maxwell?   allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
      10:54:49,078 ERROR MaxwellBootstrapUtility - Connections could not be acquired from the underlying database!java.sql.SQLException: Connections could not be acquired from the underlying database! at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
-     ```
-       
+     ```  
    - 数据库操作
-  
+     - 1, 操作maxwell.bootstrap表
+      ```   
+      # 单表操作,多表需要insert多条数据记录
+      mysql> insert into bootstrap (database_name,table_name,where_clause) values ('***','***','***');
+     ```
+     - 2, 再次启动 ./maxwell --config ./config.properties
+     > 执行完maxwell数据全库操作后, bootstrap表相关的库\表数据记录种其他字段会有数据写入表示本次全量数据导入完成, maxwell进程进入跟踪binlog日志环节.
+     > 如需要再次全库导入,则需要重复1,2, 或者update bootstrap表相关的库\表数据记录, 仅仅保留id,database_name,table_name,where_clause
