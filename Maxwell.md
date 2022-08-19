@@ -111,5 +111,5 @@
       mysql> insert into bootstrap (database_name,table_name,where_clause) values ('***','***','***');
      ```
      - 2, 再次启动 ./maxwell --config ./config.properties
-     > 执行完maxwell数据全库操作后, bootstrap表相关的库\表数据记录种其他字段会有数据写入表示本次全量数据导入完成, maxwell进程进入跟踪binlog日志环节.
-     > 如需要再次全库导入,则需要重复1,2, 或者update bootstrap表相关的库\表数据记录, 仅仅保留id,database_name,table_name,where_clause
+     > **执行完maxwell数据全库操作后, bootstrap表相关的库\表数据记录种其他字段会有数据写入表示本次全量数据导入完成, maxwell进程进入跟踪binlog日志环节.**
+     > **如需要再次全库导入,则需要重复1,2, 或者update bootstrap表相关的库\表数据记录, 仅仅保留id,database_name,table_name,where_clause**
