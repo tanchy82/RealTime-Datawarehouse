@@ -148,7 +148,7 @@
      #filter= exclude: oldtan_test.abc.col = "name"
      ```
    - 脚本过滤 
-    
+    [参考](https://github.com/zendesk/maxwell/blob/master/src/example/filter.js)
     
  ## 8, BLOB, BINARY and VARBINARY      
    Maxell will base64 encode BLOB, BINARY and VARBINARY columns (as well as varchar/string columns with a BINARY encoding).
