@@ -102,8 +102,7 @@
      [root@******** bin]# ./maxwell-bootstrap --config ./config.properties --database **** --table ***
      connecting to jdbc:mysql://127.0.0.1:3306/maxwell?allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
      10:54:49,073 ERROR MaxwellBootstrapUtility - failed to connect to mysql server @ jdbc:mysql://127.0.0.1:3306/maxwell?     allowPublicKeyRetrieval=true&connectTimeout=5000&zeroDateTimeBehavior=convertToNull
-     10:54:49,078 ERROR MaxwellBootstrapUtility - Connections could not be acquired from the underlying database!
-java.sql.SQLException: Connections could not be acquired from the underlying database! at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
+     10:54:49,078 ERROR MaxwellBootstrapUtility - Connections could not be acquired from the underlying database!java.sql.SQLException: Connections could not be acquired from the underlying database! at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118)
      ```
        
    - 数据库操作
