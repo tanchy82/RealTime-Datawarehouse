@@ -6,8 +6,10 @@
 
 #### 3 [docker-compose.yml](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/docker-compose.yml)  
 
-#### 4 技术选型介绍   
-   [Maxwell](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/Maxwell.md) ---- Mysql binlog日志处理工具
+#### 4 [maxwell config.properties](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/docker-compose.yml)  
+
+#### 5 技术选型介绍   
+   [Maxwell](https://githubbin/config.properties.com/tanchy82/RealTime-Datawarehouse/blob/master/Maxwell.md) ---- Mysql binlog日志处理工具
          
          
 
