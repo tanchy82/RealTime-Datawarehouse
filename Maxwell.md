@@ -166,6 +166,6 @@
            或者在  config.properties 文件中增加配置 kafka_version=3.2.0 
            
  ## 12, 效果图  
- [!效果图1]](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/11.png)  
- [!效果图2]](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/22.png)  
+ ![效果图1](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/11.png)  
+ ![效果图2](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/22.png)  
  
