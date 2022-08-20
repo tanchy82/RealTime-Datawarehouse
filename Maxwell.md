@@ -163,5 +163,9 @@
     
     - 1. 要把新版本jar eg.(kafka-clients-3.2.0.jar) 拷贝到 $Maxwell_home/lib/kafka-clients/目录下
     - 2. 在启动 maxwell 命令行时加上 '--kafka_version=3.2.0'   
-           或者在  config.properties 文件中增加配置 kafka_version=3.2.0
-   
+           或者在  config.properties 文件中增加配置 kafka_version=3.2.0 
+           
+ ## 12, 效果图  
+ [!效果图1]](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/11.png)  
+ [!效果图2]](https://github.com/tanchy82/RealTime-Datawarehouse/blob/master/22.png)  
+ 
